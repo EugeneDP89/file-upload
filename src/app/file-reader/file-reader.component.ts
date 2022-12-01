@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalculateSizeService } from '../services/calculate-size.service';
 import { FilesListService } from '../services/files-list.service';
 import { UploadedFile } from '../interfaces/uploaded-file';
+import { BufferedFileLineReader } from './buffered-file-line-reader'
 
 @Component({
   selector: 'app-file-reader',
@@ -23,13 +24,13 @@ export class FileReaderComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    const reader = new FileReader()
-    reader.onload = () => {
-      this.fileContent = reader.result as string
-    }
+    this.file = event.target.files[0]
+    new BufferedFileLineReader(this.file).readLines(
+      (line) => this.fileContent = this.fileContent.concat('\n', line),
+      () => { return }
+    )
     this.file = event.target.files[0]
     this.calculateFileSize(this.file.size)
-    reader.readAsText(this.file)
     const data: UploadedFile = {
       name: this.file.name,
       uploadDate: Date.now(),
