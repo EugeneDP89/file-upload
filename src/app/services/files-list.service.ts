@@ -18,8 +18,4 @@ export class FilesListService {
     this._files.push(file)
     this.filesSubject.next(this._files)
   }
-
-  listFiles() {
-    this.filesSubject.next(this._files)
-  }
 }
