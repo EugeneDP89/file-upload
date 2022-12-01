@@ -1,0 +1,8 @@
+<mat-list *ngIf="files.length > 0">
+  <div mat-subheader>List of uploaded files</div>
+  <mat-list-item *ngFor="let file of files">
+    <mat-icon mat-list-icon>note</mat-icon>
+    <div mat-line>{{file.name}}</div>
+    <div mat-line>{{file.uploadDate | date:'dd.MM.YY, HH:mm'}} ({{file.size}})</div>
+  </mat-list-item>
+</mat-list>

@@ -1,3 +1,9 @@
-mat-card {
-  margin-top: 20px;
+.content {
+  margin: 20px;
+
+  mat-card {
+    .file-content {
+      white-space: pre-wrap;
+    }
+  }
 }
