@@ -1,0 +1,11 @@
+<div>
+  <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Choose File</button>
+  <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept=".txt">
+
+  <mat-card *ngIf="fileContent">
+    <mat-card-header>
+      <mat-card-title>{{ file.name }} ({{ fileSize }}, {{ file.lastModifiedDate | date:'dd.MM.YYYY' }})</mat-card-title>
+      <mat-card-subtitle>{{ fileContent }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
